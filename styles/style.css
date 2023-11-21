@@ -43,6 +43,13 @@ body button {
     margin-bottom: 20px;
 }
 
+img {
+    border : 5px solid black;
+    border-radius: 10px;
+    height : 150px;
+    width : 100px;
+}
+
 /*Puts together the deck and pile*/
 #flex-container {
     display: flex;
@@ -83,4 +90,12 @@ body button {
     margin: auto;
     width: 25%;
     padding: 10px;
+}
+
+/*Hands display*/
+#board {
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+    padding: 10vh;
 }

@@ -3,10 +3,8 @@ class CardGame {
         this.startScreen = document.getElementById('game-intro');
         this.gameScreen = document.getElementById('game-screen');
         this.info = document.getElementById('game-container');
-        this.player = new Player(this.gameScreen, 600, 400, 75, 150);
-        this.ChosenCard = [];
-        this.bot = new Bot(this.gameScreen, 1, 400, 75, 150);
-        this.botChosenCard = [];
+        this.player = new Player(this.gameScreen);
+        this.bot = new Player(this.gameScreen);
         this.height = 600;
         this.width = 800;
         this.deck = [];
@@ -20,22 +18,42 @@ class CardGame {
         this.info.style.display = 'flex';
     }
 
+    dealCards(){
+        this.player.hand = deckBase.deck.splice(0,3);
+        this.bot.hand = deckBase.deck.splice(0,3);
+    }
+
+    clearHand(){
+        document.getElementById('img').innerHTML = '';
+    }
+
     board(){
-        for(let i = 0; i < 3; i++){
-            let tmp = deckBase.deck.pop();
-            this.bot.hand.push(tmp);
+        this.player.showCards('players-hand');
+        this.bot.showCards('bots-hand');
+        deckBase.displayCardChosen();
+    }
+
+    checkCards(card1, card2){
+        if(card1.type === deckBase.valueCard.type && card2.type === deckBase.valueCard.type){
+            if(card1.value > card2.value){
+                this.player.points += card1.value + card2.value;
+            }else{
+                this.bot.points += card1.value + card2.value;
+            }
+        }else if(card1.type === deckBase.valueCard.type && card2.type !== deckBase.valueCard.type){
+            this.player.points += card1.value + card2.value;
+        }else if(card2.type === deckBase.valueCard.type && card1.type !== deckBase.valueCard.type){
+            this.bot.points += card1.value + card2.value;
+        }else{
+            if(card1.type === card2.type){
+                if(card1.value > card2.value){
+                  this.player.points += card1.value + card2.value;
+                }else{
+                  this.bot.points += card1.value + card2.value;
+                }
+            }else{
+                this.player.points += card1.value + card2.value;
+            }
         }
-        for(let j = 0; j < 3; j++){
-            let tmp = deckBase.deck.pop();
-            this.player.hand.push(tmp);
-        }
-
-        console.log(this.bot.hand);
-        console.log(this.player.hand);
-
-        this.bot.handCards();
-
-
-        this.player.handCards();
     }
 }

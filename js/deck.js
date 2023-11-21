@@ -1,9 +1,10 @@
 class DeckBase {
     constructor(cards) {
         this.cards = cards;
-        this.valueCard = '';
+        this.valueCard = [];
         this.deck = [];
         this.pileCards = [];
+        this.cardChosen = [];
     }
 
     shuffleCardsToDeck(){
@@ -30,6 +31,18 @@ class DeckBase {
         return this.valueCard;
     }
 
+    displayCardChosen(){
+        const display = document.getElementById('cards-chosen');
+
+        for (let i = 0; i < this.cardChosen.length; i++) {
+            let img = document.createElement('img');
+            img.setAttribute('id', 'card');
+            img.src = `${this.cardChosen[i].img}`;
+
+            display.appendChild(img);
+        }
+    }
+
     displayDeck(){
         const display = document.getElementById('deck');
 
@@ -38,33 +51,12 @@ class DeckBase {
 
         for (let i = 0; i < this.deck.length; i++) {
             let img = document.createElement('img');
+            img.setAttribute('id', 'card');
             img.src = `${this.deck[i].img}`;
-
-            img.style.border = '5px solid black';
-            img.style.borderRadius = '10px';
-            img.style.height = '150px';
-            img.style.width = '100px';
 
             display.appendChild(img);
         }
     }
-
-    displayPile(){
-        const display = document.getElementById('pile');
-        
-        let space = document.createElement('br');
-        display.appendChild(space);
-
-        //add the cards that are being piled
-    }
-
-    /*drawCard(){
-        if (this.deck.length === 0) {
-            return;
-        }
-
-        return deck.pop();
-    }*/
 
     CheckDeck(){
         return this.deck.length;

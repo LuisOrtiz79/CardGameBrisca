@@ -68,13 +68,9 @@ const cards = [
     //This is where the image is created and viewed on the page
     let space = document.createElement('br');
     valueCard.appendChild(space);
+
     let img = document.createElement('img');
     img.src = `${deckBase.valueCard.img}`;
-
-    img.style.border = '5px solid black';
-    img.style.borderRadius = '10px';
-    img.style.height = '150px';
-    img.style.width = '100px';
 
     valueCard.appendChild(img);
 
@@ -88,18 +84,57 @@ const cards = [
 
     startButton.addEventListener('click', function () {
       base = new CardGame;
-      base.board();
+      base.dealCards();
       startGame();
     });
-  
+
+    let playerTurn = true;
+
     function startGame(){
       console.log('start game');
       base.start();
 
+      base.board();
+
       document.querySelector('#game-rules').style.display = 'none';
-      document.addEventListener('click', (e) => {
-        console.log('Events', e);
+      document.getElementById('board').addEventListener('click', (e) => {
+        e.target.remove()
+        let tmp = e.target;
+        console.log(tmp);
+        let srcString = e.target.src.replace('http://127.0.0.1:5500/', "../")
+
+        if(playerTurn){
+          let index = base.player.hand.findIndex(card => card.img === String(srcString));
+          let playerCardChosen = base.player.hand.splice(index, 1);
+          console.log(playerCardChosen);
+          console.log(base.player.hand);
+          if(playerCardChosen){
+            deckBase.cardChosen.push(playerCardChosen);
+            //base.player.showCards('players-hand');
+            playerTurn = false;
+          }
+
+          setTimeout(() => {
+            let random = Math.floor(Math.random() * 3);
+            let botCardChosen = base.bot.hand.splice(random, 1);
+            console.log(botCardChosen);
+            console.log(base.bot.hand);
+            if(botCardChosen){
+              deckBase.cardChosen.push(botCardChosen);
+              //base.bot.showCards('bots-hand');
+            }
+          }, 1000);
+
+          if(deckBase.cardChosen === 2){
+            console.log(deckBase.cardChosen[0].type);
+            console.log(deckBase.cardChosen[1].type);
+            console.log(deckBase.valueCard.type);
+            base.checkCards(deckBase.cardChosen[0], deckBase.cardChosen[1])
+            deck.cardChosen = [];
+          }
+        }
       })
+
     }
 
     const rulesButton = document.getElementById('rules-button');
