@@ -1,0 +1,86 @@
+body {
+    padding: 0;
+    text-align: center;
+}
+
+/*Has the pages id of the game*/
+#game-intro {
+    padding: 20px 0px;
+}
+  
+#game-container {
+    display: flex;
+    width: 100vw;
+    padding: 20px 0px;
+    justify-content: center;
+}
+  
+#game-screen {
+    display: none;
+    align-content: center;
+    padding: 20px 0px;
+    overflow: hidden;
+    position: relative;
+    background-image: url(../images/Card_Game_Background.jpg);
+    background-size: cover;
+}
+
+
+.game-intro h1 {
+    font-size: 18px;
+    font-family: "Verdana";
+}
+
+/*All buttons size a form*/
+body button {
+    font-size: 30px;
+    background-color: blue;
+    color: #fff;
+    padding: 20px 40px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/*Puts together the deck and pile*/
+#flex-container {
+    display: flex;
+    width: 150%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*styles the deck as a stack */
+#deck {
+    margin-top: 20px;
+    position: relative;
+    width: 100px;
+    height: 150px;
+}
+
+#deck img {
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    border: 1px solid #000;
+    background-color: #fff;
+    text-align: center;
+    line-height: 150px;
+    transition: top 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+#deck div:nth-child(n+2) {
+    top: -10px;
+    left: 5px;
+    z-index: -1;
+}
+
+/*Cleans the ordered list*/
+#game-rules div {
+    text-align: left;
+    margin: auto;
+    width: 25%;
+    padding: 10px;
+}

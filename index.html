@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Brisca Card Game</title>
+  </head>
+  <body>
+    <main>
+        <div id="game-intro">
+          <h1>Simple Brisca Card Game</h1>
+          <button id="start-button">Start Game</button>
+
+          <br/>
+          
+          <button id="rules-button">Game Rules</button>
+        </div>
+
+        <div id="game-container">
+          <!-- #game-screen is initially hidden using CSS style display: none -->
+          <div id="game-screen"></div>
+
+          <div id="board">
+            <p id="player-hand"></p>
+            <b></b>
+            <p id="bots-hand"></p>
+          </div>
+
+          <div>
+            <h2>Card Zone</h2>
+            <p>ValueCard: <span id="valueCard"></span></p>
+            <div id="flex-container">
+              <p>Deck: <span id="deck"></span></p>
+              <p>Pile: <span id="pile"></span></p>
+            </div>
+
+
+            <h2>Points</h2>
+            <p>Player: <span id="playerPoints">0</span></p>
+            <p>Bot: <span id="botPoints">0</span></p>
+          </div>
+        </div>
+
+        <div id="game-rules">
+          <h2>Rules of the Game</h2>
+          <h3>Instructions:</h3>
+          <div>
+            <p>1. The deck contains 48 cards of 4 diferent types such as:
+            <br><b> Sword </b>, <b> Gold </b>, <b> Cup  </b>,
+              <b> Club(Stick depending on the actual translation to english)</b>
+            </p>
+            <p>2. Before begining the game a random card is chosen from the deck to be
+              the one that trumps all other types that game.
+            </p>
+            <p>3. Each player begins with 3 cards on their hand.</p>
+            <p>4. After having their hand each player use one card each turn until no Card
+              remains on the deck.
+            </p>
+            <p>5. At the end each player counts the cards that have value and who ever has 
+              the highest point wins. The values for each card is: <br><b>One</b> values: <b>11</b>,
+              <b>Three</b> values: <b>10</b>, <b>Ten</b> values: <b>2</b>, <b>Eleventh</b> values: <b>3</b>, 
+              <b>Twelthe</b> values: <b>4</b>, <b>Others</b> value: <b>0</b>.
+            </p>
+          </div>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="js/player.js"></script>
+    <script type="text/javascript" src="js/deck.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
