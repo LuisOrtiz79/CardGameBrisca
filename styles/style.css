@@ -1,6 +1,7 @@
 body {
     padding: 0;
     text-align: center;
+    background-color: #FFE4C4;
 }
 
 /*Has the pages id of the game*/
@@ -21,8 +22,16 @@ body {
     padding: 20px 0px;
     overflow: hidden;
     position: relative;
-    background-image: url(../images/Card_Game_Background.jpg);
-    background-size: cover;
+    background-color: 	#228B22;
+    /*background-image: url(../images/Card_Game_Background.jpg);
+    background-size: cover;*/
+}
+
+#game-rules {
+    margin: 0 auto;
+    height: 100vh;
+    width: 750px;
+    background-color: #F0FFF0;
 }
 
 
@@ -34,7 +43,7 @@ body {
 /*All buttons size a form*/
 body button {
     font-size: 30px;
-    background-color: blue;
+    background-color: #1E90FF;
     color: #fff;
     padding: 20px 40px;
     border: 0;
@@ -43,8 +52,9 @@ body button {
     margin-bottom: 20px;
 }
 
+/*Styles the borders and size of the cards*/
 img {
-    border : 5px solid black;
+    border : 5px solid #000;
     border-radius: 10px;
     height : 150px;
     width : 100px;
@@ -59,15 +69,19 @@ img {
     align-items: center;
 }
 
-/*styles the deck as a stack */
-#deck {
+/*styles the valueCard, deck, pile as a stack */
+#valueCard,
+#deck,
+#pile {
     margin-top: 20px;
     position: relative;
     width: 100px;
     height: 150px;
 }
 
-#deck img {
+#valueCard img,
+#deck img,
+#pile img  {
     position: absolute;
     width: 100px;
     height: 150px;
@@ -78,7 +92,9 @@ img {
     transition: top 0.3s ease-in-out, left 0.3s ease-in-out;
 }
 
-#deck div:nth-child(n+2) {
+#valueCard div:nth-child(n+2),
+#deck div:nth-child(n+2),
+#pile div:nth-child(n+2) {
     top: -10px;
     left: 5px;
     z-index: -1;

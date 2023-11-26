@@ -1,16 +1,16 @@
-class DeckBase {
+class Deck {
     constructor(cards) {
         this.cards = cards;
         this.valueCard = [];
         this.deck = [];
         this.pileCards = [];
-        this.cardChosen = [];
+        this.cardsChosen = [];
     }
 
     shuffleCardsToDeck(){
         if(!this.cards){
             return undefined;
-          }else{
+        }else{
             for(let i = this.cards.length - 1 ; i > 0; i--) {
               let random = Math.floor(Math.random() * (i + 1));
               let tmp = this.cards[i];
@@ -26,25 +26,29 @@ class DeckBase {
 
     checkValueCard(){
         let random = this.deck[Math.floor(Math.random() * this.deck.length)];
-        this.valueCard = random;
-        this.deck = this.deck.filter(arr => arr !== random);
+        let temp = this.deck.splice(random, 1);
+        let tempPop = temp.pop()
+        this.valueCard.push(tempPop);
+        
         return this.valueCard;
     }
 
-    displayCardChosen(){
-        const display = document.getElementById('cards-chosen');
+    displayValueCard(){
+        const display = document.getElementById('valueCard');
 
-        for (let i = 0; i < this.cardChosen.length; i++) {
-            let img = document.createElement('img');
-            img.setAttribute('id', 'card');
-            img.src = `${this.cardChosen[i].img}`;
-
-            display.appendChild(img);
-        }
+        let space = document.createElement('br');
+        display.appendChild(space);
+    
+        let img = document.createElement('img');
+        img.setAttribute('id', 'card');
+        img.src = `${this.valueCard[0].img}`;
+    
+        display.appendChild(img);
     }
 
     displayDeck(){
         const display = document.getElementById('deck');
+        display.innerText = this.deck.length;
 
         let space = document.createElement('br');
         display.appendChild(space);
@@ -53,6 +57,38 @@ class DeckBase {
             let img = document.createElement('img');
             img.setAttribute('id', 'card');
             img.src = `${this.deck[i].img}`;
+
+            display.appendChild(img);
+        }
+    }
+
+    displayPile(){
+        const display = document.getElementById('pile');
+        display.innerText = this.pileCards.length;
+
+        let space = document.createElement('br');
+        display.appendChild(space);
+
+        for (let i = 0; i < this.pileCards.length; i++) {
+            let img = document.createElement('img');
+            img.setAttribute('id', 'card');
+            img.src = `${this.pileCards[i].img}`;
+
+            display.appendChild(img);
+        }
+    }
+
+    displayCardsChosen(){
+        const display = document.getElementById('cards-chosen');
+
+        const name = document.createElement('p');
+        name.innerText = 'Cards chosen:';
+        display.appendChild(name);
+
+        for (let i = 0; i < this.cardsChosen.length; i++) {
+            let img = document.createElement('img');
+            img.setAttribute('id', 'card');
+            img.src = `${this.cardsChosen[i].img}`;
 
             display.appendChild(img);
         }

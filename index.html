@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./styles/style.css" />
-    <title>Brisca Card Game</title>
+    <link rel="icon" href="./images/brisca_img.png">
+    <title>Card Game Brisca</title>
   </head>
   <body>
     <main>
         <div id="game-intro">
-          <h1>Simple Brisca Card Game</h1>
+          <h1>Brisca: The card game</h1>
+          <h4>A simple version</h4>
+          <br />
           <button id="start-button">Start Game</button>
-
-          <br/>
-          
+          <br />
           <button id="rules-button">Game Rules</button>
         </div>
 
@@ -22,33 +23,34 @@
           <!-- #game-screen is initially hidden using CSS style display: none -->
           <div id="game-screen">
             <div id="board">
-              <div id="bots-hand">
-                <p>Bots Hand: </p>
-                <br>
-              </div>
-              <br>
+              <div id="bots-hand"></div>
+              <br />
               <div id="cards-chosen"></div>
-              <br>
-              <div id="players-hand">
-                <p>Players hand: </p>
-                <br>
-              </div>
+              <br />
+              <div id="players-hand"></div>
             </div>
           </div>
 
           <div>
+            <h2>Points</h2>
+            <p>Player: <span id="playerPoints">0</span></p>
+            <p>Bot: <span id="botPoints">0</span></p>
+            
             <h2>Card Zone</h2>
             <p>ValueCard: <span id="valueCard"></span></p>
             <div id="flex-container">
               <p>Deck: <span id="deck"></span></p>
               <p>Pile: <span id="pile"></span></p>
             </div>
-
-
-            <h2>Points</h2>
-            <p>Player: <span id="playerPoints">0</span></p>
-            <p>Bot: <span id="botPoints">0</span></p>
           </div>
+        </div>
+
+        <div id="game-end">
+          <h1>Game Over</h1>
+          <br />
+          <p id="end-message"></p>
+          <br />
+          <button id="restart-button">Restart</button>
         </div>
 
         <div id="game-rules">
