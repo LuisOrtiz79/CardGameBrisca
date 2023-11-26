@@ -10,7 +10,7 @@ const cards = [
     { type: 'Sword', name: 'Nine', int: 9, value: 0, img: '../images/Sword_9.jpeg' },
     { type: 'Sword', name: 'Ten', int: 10, value: 2, img: '../images/Sword_10.jpeg' },
     { type: 'Sword', name: 'Eleven', int: 11, value: 3, img: '../images/Sword_11.jpeg' },
-    { type: 'Sword', name: 'Twelthe', int: 12, value: 4, img: '../images/Sword_12.jpeg' },
+    { type: 'Sword', name: 'Twelve', int: 12, value: 4, img: '../images/Sword_12.jpeg' },
     { type: 'Cup', name: 'One', int: 1, value: 11, img: '../images/Cup_1.jpeg' },
     { type: 'Cup', name: 'Two', int: 2, value: 0, img: '../images/Cup_2.jpeg' },
     { type: 'Cup', name: 'Three', int: 3, value: 10, img: '../images/Cup_3.jpeg' },
@@ -22,7 +22,7 @@ const cards = [
     { type: 'Cup', name: 'Nine', int: 9, value: 0, img: '../images/Cup_9.jpeg' },
     { type: 'Cup', name: 'Ten', int: 10, value: 2, img: '../images/Cup_10.jpeg' },
     { type: 'Cup', name: 'Eleven', int: 11, value: 3, img: '../images/Cup_11.jpeg' },
-    { type: 'Cup', name: 'Twelthe', int: 12, value: 4, img: '../images/Cup_12.jpeg' },
+    { type: 'Cup', name: 'Twelve', int: 12, value: 4, img: '../images/Cup_12.jpeg' },
     { type: 'Gold', name: 'One', int: 1, value: 11, img: '../images/Gold_1.jpeg' },
     { type: 'Gold', name: 'Two', int: 2, value: 0, img: '../images/Gold_2.jpeg' },
     { type: 'Gold', name: 'Three', int: 3, value: 10, img: '../images/Gold_3.jpeg' },
@@ -34,7 +34,7 @@ const cards = [
     { type: 'Gold', name: 'Nine', int: 9, value: 0, img: '../images/Gold_9.jpeg' },
     { type: 'Gold', name: 'Ten', int: 10, value: 2, img: '../images/Gold_10.jpeg' },
     { type: 'Gold', name: 'Eleven', int: 11, value: 3, img: '../images/Gold_11.jpeg' },
-    { type: 'Gold', name: 'Twelthe', int: 12, value: 4, img: '../images/Gold_12.jpeg' },
+    { type: 'Gold', name: 'Twelve', int: 12, value: 4, img: '../images/Gold_12.jpeg' },
     { type: 'Club', name: 'One', int: 1, value: 11, img: '../images/Club_1.jpeg' },
     { type: 'Club', name: 'Two', int: 2, value: 0, img: '../images/Club_2.jpeg' },
     { type: 'Club', name: 'Three', int: 3, value: 10, img: '../images/Club_3.jpeg' },
@@ -46,7 +46,7 @@ const cards = [
     { type: 'Club', name: 'Nine', int: 9, value: 0, img: '../images/Club_9.jpeg' },
     { type: 'Club', name: 'Ten', int: 10, value: 2, img: '../images/Club_10.jpeg' },
     { type: 'Club', name: 'Eleven', int:11, value: 3, img: '../images/Club_11.jpeg' },
-    { type: 'Club', name: 'Twelthe', int: 12, value: 4, img: '../images/Club_12.jpeg' }
+    { type: 'Club', name: 'Twelve', int: 12, value: 4, img: '../images/Club_12.jpeg' }
   ];
 
   const cardDeck = new Deck(cards);
@@ -62,11 +62,8 @@ const cards = [
     let pile = document.getElementById('pile');
     let playerPoints = document.getElementById('playerPoints');
     let botPoints = document.getElementById('botPoints');
-
-    //Shuffles the cards and puts it in the deck
-    cardDeck.shuffleCardsToDeck();
-    //Gets the random value card
-    cardDeck.checkValueCard();
+    let player = document.querySelector('#players-hand');
+    let bot = document.querySelector('#bots-hand');
     
     const startButton = document.getElementById('start-button');
     const restartButton = document.getElementById("restart-button");
@@ -76,6 +73,11 @@ const cards = [
     
     //Listens to the button click when the games is going to start
     startButton.addEventListener('click', function () {
+      //Shuffles the cards and puts it in the deck
+      cardDeck.shuffleCardsToDeck();
+      //Gets the random value card
+      cardDeck.checkValueCard();
+
       game = new CardGame;
       game.dealCards();
 
@@ -88,6 +90,11 @@ const cards = [
     
     //Listens to the button click when the games is going to restart
     restartButton.addEventListener("click", function () {
+      //Shuffles the cards and puts it in the deck
+      cardDeck.shuffleCardsToDeck();
+      //Gets the random value card
+      cardDeck.checkValueCard();
+
       game = new CardGame;
       game.dealCards();
 
@@ -106,7 +113,7 @@ const cards = [
       game.board();
       
       document.getElementById('board').addEventListener('click', (e) => {
-        e.target.remove()
+        //e.target.remove()
         // let tmp = e.target;
         // console.log(tmp);
         let srcString = e.target.src.replace('http://127.0.0.1:5500/', "../")
@@ -121,7 +128,6 @@ const cards = [
 
             if(playerCardChosen){
               cardDeck.cardsChosen.push(playerCardChosen);
-              let player = document.querySelector('#players-hand');
               player.innerHTML = '';
               game.player.showCards('players-hand');
               playerTurn = false;
@@ -134,7 +140,6 @@ const cards = [
             
             if(botCardChosen){
               cardDeck.cardsChosen.push(botCardChosen);
-              let bot = document.querySelector('#bots-hand');
               bot.innerHTML = '';
               game.bot.showCards('bots-hand');
               playerTurn = true;
@@ -158,17 +163,16 @@ const cards = [
                     let tmp = cardDeck.cardsChosen.pop();
                     cardDeck.pileCards.push(tmp);
                   }
+
                   pile.innerHTML = '';
                   pile.append(cardDeck.displayPile());
                   choice.innerHTML = '';
                 }, 1000);
 
                 setTimeout(() => {
-                  let player = document.querySelector('#players-hand');
                   player.innerHTML = '';
                   game.player.showCards('players-hand');
   
-                  let bot = document.querySelector('#bots-hand');
                   bot.innerHTML = '';
                   game.bot.showCards('bots-hand');
                 }, 1000);
@@ -178,6 +182,7 @@ const cards = [
                     let tmp = cardDeck.cardsChosen.pop();
                     cardDeck.pileCards.push(tmp);
                   }
+                  
                   pile.innerHTML = '';
                   pile.append(cardDeck.displayPile());
                   choice.innerHTML = '';
@@ -192,11 +197,9 @@ const cards = [
                 valueCard.innerHTML = '';
 
                 setTimeout(() => {
-                  let player = document.querySelector('#players-hand');
                   player.innerHTML = '';
                   game.player.showCards('players-hand');
   
-                  let bot = document.querySelector('#bots-hand');
                   bot.innerHTML = '';
                   game.bot.showCards('bots-hand');
                 }, 1000);
@@ -214,15 +217,14 @@ const cards = [
   
                 let playerPush = cardDeck.deck.pop();
                 game.player.hand.push(playerPush);
+
                 let botPush = cardDeck.deck.pop();
                 game.bot.hand.push(botPush);
   
                 setTimeout(() => {
-                  let player = document.querySelector('#players-hand');
                   player.innerHTML = '';
                   game.player.showCards('players-hand');
   
-                  let bot = document.querySelector('#bots-hand');
                   bot.innerHTML = '';
                   game.bot.showCards('bots-hand');
                 }, 1000);
@@ -241,6 +243,9 @@ const cards = [
 
         //When the hands and stack are empty show who won the game
         if(game.player.hand.length === 0 && game.bot.hand.length === 0){
+          player.innerHTML = '';
+          bot.innerHTML = '';
+
           game.end();
         }
       })

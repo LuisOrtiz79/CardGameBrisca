@@ -38,19 +38,31 @@ class CardGame {
       if(card1.type === cardDeck.valueCard.type && card2.type === cardDeck.valueCard.type){
         if(card1.value > card2.value){
           this.player.points += card1.value + card2.value;
-        }else{
+        }else if(card1.value < card2.value){
           this.bot.points += card1.value + card2.value;
+        }else{
+          if(card1.int > card2.int){
+            this.player.points += card1.value + card2.value;
+          }else{
+            this.bot.points += card1.value + card2.value;
+          }
         }
       }else if(card1.type === cardDeck.valueCard.type && card2.type !== cardDeck.valueCard.type){
         this.player.points += card1.value + card2.value;
-      }else if(card2.type === cardDeck.valueCard.type && card1.type !== cardDeck.valueCard.type){
+      }else if(card1.type !== cardDeck.valueCard.type && card2.type === cardDeck.valueCard.type){
         this.bot.points += card1.value + card2.value;
       }else {
         if(card1.type === card2.type){
           if(card1.value > card2.value){
             this.player.points += card1.value + card2.value;
-          }else{
+          }else if(card1.value < card2.value){
             this.bot.points += card1.value + card2.value;
+          }else{
+            if(card1.int > card2.int){
+              this.player.points += card1.value + card2.value;
+            }else{
+              this.bot.points += card1.value + card2.value;
+            }
           }
         }else{
           this.player.points += card1.value + card2.value;
