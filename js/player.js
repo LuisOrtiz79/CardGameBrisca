@@ -9,10 +9,6 @@ class Player {
         if(id === 'players-hand'){
             const display = document.getElementById(id);
 
-            const name = document.createElement('p');
-            name.innerText = 'Players hand:';
-            display.appendChild(name);
-
             for (let i = 0; i < this.hand.length; i++) {
                 let img = document.createElement('img');
                 img.setAttribute('id', 'card');
@@ -20,6 +16,10 @@ class Player {
 
                 display.appendChild(img);
             }
+
+            const name = document.createElement('p');
+            name.innerText = 'Players hand:';
+            display.appendChild(name);
 
         }else{
             const display = document.getElementById(id);

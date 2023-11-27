@@ -22,9 +22,7 @@ body {
     padding: 20px 0px;
     overflow: hidden;
     position: relative;
-    background-color: 	#228B22;
-    /*background-image: url(../images/Card_Game_Background.jpg);
-    background-size: cover;*/
+    background-color: #228B22;
 }
 
 #game-rules {
@@ -54,16 +52,39 @@ body button {
 
 /*Styles the borders and size of the cards*/
 img {
+    display: inline-block;
     border : 5px solid #000;
     border-radius: 10px;
     height : 150px;
     width : 100px;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+}
+
+#points {
+    background-color: lightgreen;
+    border-radius: 8px;
+    font-size: 25px;
+    width: 200px;
+    padding: 20px;
+    margin-right: 75%;
+}
+
+#card-zone{
+    background-color: lightgreen;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 320px;
+    height: 345px;
+    padding: 20px;
+    margin-right: 75%;
 }
 
 /*Puts together the deck and pile*/
 #flex-container {
     display: flex;
-    width: 150%;
+    width: 300px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -84,9 +105,8 @@ img {
 #pile img  {
     position: absolute;
     width: 100px;
-    height: 150px;
+    min-height: 150px;
     border: 1px solid #000;
-    background-color: #fff;
     text-align: center;
     line-height: 150px;
     transition: top 0.3s ease-in-out, left 0.3s ease-in-out;
@@ -113,5 +133,13 @@ img {
     display: inline-block;
     text-align: center;
     align-items: center;
+    position: relative;
     padding: 10vh;
+}
+
+#cards-chosen {
+    position: absolute;
+    margin-left: 60%;
+    margin-top: 30%;
+    background-color: beige;
 }
