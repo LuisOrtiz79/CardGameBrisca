@@ -56,7 +56,7 @@ class Deck {
         for (let i = 0; i < this.deck.length; i++) {
             let img = document.createElement('img');
             img.setAttribute('id', 'card');
-            img.src = `${'./images/card_back.jpg'}`;
+            img.src = `${'https://github.com/LuisOrtiz79/cardGameBrisca/tree/master/images/card_back.jpg'}`;
 
             display.appendChild(img);
         }
