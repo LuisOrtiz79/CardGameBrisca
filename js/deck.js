@@ -56,11 +56,7 @@ class Deck {
         for (let i = 0; i < this.deck.length; i++) {
             let img = document.createElement('img');
             img.setAttribute('id', 'card');
-<<<<<<< HEAD
             img.src = `${'https://github.com/LuisOrtiz79/cardGameBrisca/tree/master/images/card_back.jpg'}`;
-=======
-            img.src = `${'https://luisortiz79.github.io/cardGameBrisca/images/card_back.jpg'}`;
->>>>>>> d24cb159b794aa2bd80597ea5f522b05a368f58c
 
             display.appendChild(img);
         }
@@ -76,7 +72,7 @@ class Deck {
         for (let i = 0; i < this.pileCards.length; i++) {
             let img = document.createElement('img');
             img.setAttribute('id', 'card');
-            img.src = `${this.pileCards[i].img}`;
+            img.src = `https://github.com/LuisOrtiz79/cardGameBrisca/tree/master/images/${this.pileCards[i].img}`;
 
             display.appendChild(img);
         }
@@ -92,7 +88,7 @@ class Deck {
         for (let i = 0; i < this.cardsChosen.length; i++) {
             let img = document.createElement('img');
             img.setAttribute('id', 'card');
-            img.src = `${this.cardsChosen[i].img}`;
+            img.src = `https://github.com/LuisOrtiz79/cardGameBrisca/tree/master/images/${this.cardsChosen[i].img}`;
 
             display.appendChild(img);
         }
