@@ -1,6 +1,5 @@
 class Player {
-    constructor(gameScreen){
-        this.gameScreen = gameScreen;
+    constructor(){
         this.hand = [];
         this.points = 0;
     }
@@ -31,12 +30,12 @@ class Player {
             for (let i = 0; i < this.hand.length; i++) {
                 let img = document.createElement('img');
                 img.setAttribute('id', 'card');
-                img.src = `${this.hand[i].img}`;
+                img.src = `${'../images/card_back.jpg'}`;
 
                 display.appendChild(img);
             }
         }
-        
+
     }
 
     totalPoints(){

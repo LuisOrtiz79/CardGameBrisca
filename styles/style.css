@@ -1,28 +1,28 @@
 body {
     padding: 0;
     text-align: center;
-    background-color: #FFE4C4;
+    background-color: #FFECD2 ;
 }
 
 /*Has the pages id of the game*/
 #game-intro {
     padding: 20px 0px;
 }
-  
+
 #game-container {
     display: flex;
     width: 100vw;
     padding: 20px 0px;
     justify-content: center;
 }
-  
+
 #game-screen {
     display: none;
     align-content: center;
     padding: 20px 0px;
     overflow: hidden;
     position: relative;
-    background-color: #228B22;
+    background: linear-gradient(160deg, #38EF7D 0%, #11998E 100%);
 }
 
 #game-rules {
@@ -41,7 +41,7 @@ body {
 /*All buttons size a form*/
 body button {
     font-size: 30px;
-    background-color: #1E90FF;
+    background: linear-gradient(160deg, #4E65FF  0%, #92EFFD  100%);
     color: #fff;
     padding: 20px 40px;
     border: 0;
@@ -51,7 +51,7 @@ body button {
 }
 
 /*Styles the borders and size of the cards*/
-img {
+#card {
     display: inline-block;
     border : 5px solid #000;
     border-radius: 10px;
@@ -59,11 +59,12 @@ img {
     width : 100px;
     padding: 10px;
     border-radius: 10px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #92EFFD 0%, #4E65FF 100%);
 }
 
+/* Styles the points board and where the cards are stored */
 #points {
-    background-color: lightgreen;
+    background: linear-gradient(160deg,#BFF098 0%, #6FD6FF 100%);
     border-radius: 8px;
     font-size: 25px;
     width: 200px;
@@ -72,7 +73,7 @@ img {
 }
 
 #card-zone{
-    background-color: lightgreen;
+    background: linear-gradient(160deg, #6FD6FF 0%, #BFF098 100%);
     border-radius: 8px;
     font-size: 15px;
     width: 320px;
@@ -141,5 +142,10 @@ img {
     position: absolute;
     margin-left: 60%;
     margin-top: 30%;
-    background-color: beige;
+}
+
+#logo {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
 }

@@ -29,7 +29,7 @@ class Deck {
         let temp = this.deck.splice(random, 1);
         let tempPop = temp.pop()
         this.valueCard.push(tempPop);
-        
+
         return this.valueCard;
     }
 
@@ -38,11 +38,11 @@ class Deck {
 
         let space = document.createElement('br');
         display.appendChild(space);
-    
+
         let img = document.createElement('img');
         img.setAttribute('id', 'card');
         img.src = `${this.valueCard[0].img}`;
-    
+
         display.appendChild(img);
     }
 
@@ -56,7 +56,7 @@ class Deck {
         for (let i = 0; i < this.deck.length; i++) {
             let img = document.createElement('img');
             img.setAttribute('id', 'card');
-            img.src = `${this.deck[i].img}`;
+            img.src = `${'../images/card_back.jpg'}`;
 
             display.appendChild(img);
         }

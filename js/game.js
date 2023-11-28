@@ -5,8 +5,8 @@ class CardGame {
     this.info = document.getElementById('game-container');
     this.gameEndScreen = document.getElementById('game-end');
     this.endMessage = document.getElementById('end-message');
-    this.player = new Player(this.gameScreen);
-    this.bot = new Player(this.gameScreen);
+    this.player = new Player();
+    this.bot = new Player();
     this.height = 600;
     this.width = 800;
   }
@@ -19,7 +19,7 @@ class CardGame {
     this.gameScreen.style.display = 'inherit';
     this.info.style.display = 'flex';
   }
-    
+
   //Add the cards to each players hand
   dealCards(){
     for(let i = 0; i < 3; i++){
@@ -67,12 +67,13 @@ class CardGame {
 
   //Display who won the game and hides the game
   end() {
+
     this.gameScreen.style.height = `${0}px`;
     this.gameScreen.style.width = `${0}px`;
     this.gameScreen.style.display = 'none';
     this.info.style.display = 'none';
     this.gameEndScreen.style.display = 'inherit';
-      
+
     if (this.player.points > this.bot.points) {
       this.endMessage.innerText = `You won! You finished with a total of ${this.player.points} points. Great Job!`;
     }else if(this.player.points < this.bot.points){

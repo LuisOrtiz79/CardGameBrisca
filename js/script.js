@@ -49,7 +49,7 @@ const cards = [
   { type: 'Club', name: 'Twelve', int: 12, value: 4, img: '../images/Club_12.jpeg' }
 ];
 
-const cardDeck = new Deck(cards);
+let cardDeck = new Deck(cards);
 
 window.onload = function () {
 
@@ -57,6 +57,7 @@ window.onload = function () {
   document.querySelector('#game-rules').style.display = 'none';
   document.querySelector('#game-end').style.display = 'none';
 
+  //Gets all the id's and query's from the html to be used later in the code
   let valueCard = document.getElementById('valueCard');
   let deck = document.getElementById('deck');
   let pile = document.getElementById('pile');
@@ -65,16 +66,18 @@ window.onload = function () {
   let player = document.querySelector('#players-hand');
   let bot = document.querySelector('#bots-hand');
   let choice = document.querySelector('#cards-chosen');
-    
+
   const startButton = document.getElementById('start-button');
   const restartButton = document.getElementById("restart-button");
 
   let game;
   let playerTurn = true;
-    
+
   //Listens to the button click when the games is going to start
   startButton.addEventListener('click', function () {
     document.querySelector('#game-rules').style.display = 'none';
+    document.querySelector('#logo').style.display = 'none';
+    cardDeck = new Deck(cards)
     //Shuffles the cards and puts it in the deck
     cardDeck.shuffleCardsToDeck();
     //Gets the random value card
@@ -89,26 +92,12 @@ window.onload = function () {
 
     startGame();
   });
-    
+
   //Listens to the button click when the games is going to restart
   restartButton.addEventListener("click", function () {
     document.querySelector('#game-end').style.display = 'none';
-    
+
     resetGame();
-
-    //Shuffles the cards and puts it in the deck
-    cardDeck.shuffleCardsToDeck();
-    //Gets the random value card
-    cardDeck.checkValueCard();
-
-    game = new CardGame();
-    game.dealCards();
-
-    //This is where the deck and chosen is created and viewed on the page
-    deck.append(cardDeck.displayDeck())
-    valueCard.append(cardDeck.displayValueCard());
-
-    startGame();
   })
 
   function startGame(){
@@ -117,19 +106,13 @@ window.onload = function () {
 
     //Displays the initial hand of the player and the bot
     game.board();
-    
-    let randomUser = Math.floor(Math.random() * 1);
-    if(randomUser === 0){
-      alert('Player goes First');
-    }else{
-      alert('Player goes Second');
-      playerTurn = false;
-    }
 
+    //Stores the type of the valueCard to be used un the comparison
     let valueCardType = cardDeck.valueCard[0].type;
-      
+
     document.getElementById('board').addEventListener('click', (e) => {
-      //e.target.remove()
+      //console.log(e.target.src)
+
       let srcString = e.target.src.replace('http://127.0.0.1:5500/', "../")
 
       //Finish the last part
@@ -151,7 +134,7 @@ window.onload = function () {
           let random = Math.floor(Math.random() * game.bot.hand.length);
           let botTemp = game.bot.hand.splice(random, 1);
           let botCardChosen = botTemp.pop();
-            
+
           if(botCardChosen){
             cardDeck.cardsChosen.push(botCardChosen);
             bot.innerHTML = '';
@@ -182,7 +165,7 @@ window.onload = function () {
               setTimeout(() => {
                 player.innerHTML = '';
                 game.player.showCards('players-hand');
-  
+
                 bot.innerHTML = '';
                 game.bot.showCards('bots-hand');
               }, 1000);
@@ -192,7 +175,7 @@ window.onload = function () {
                   let tmp = cardDeck.cardsChosen.pop();
                   cardDeck.pileCards.push(tmp);
                 }
-                  
+
                 pile.innerHTML = '';
                 pile.append(cardDeck.displayPile());
                 choice.innerHTML = '';
@@ -202,14 +185,14 @@ window.onload = function () {
               game.player.hand.push(playerPush);
               let botPush = cardDeck.valueCard.pop();
               game.bot.hand.push(botPush);
-      
+
               deck.innerHTML = '';
               valueCard.innerHTML = '';
 
               setTimeout(() => {
                 player.innerHTML = '';
                 game.player.showCards('players-hand');
-  
+
                 bot.innerHTML = '';
                 game.bot.showCards('bots-hand');
               }, 1000);
@@ -224,21 +207,21 @@ window.onload = function () {
                 pile.append(cardDeck.displayPile());
                 choice.innerHTML = '';
               }, 1000);
-  
+
               let playerPush = cardDeck.deck.pop();
               game.player.hand.push(playerPush);
 
               let botPush = cardDeck.deck.pop();
               game.bot.hand.push(botPush);
-  
+
               setTimeout(() => {
                 player.innerHTML = '';
                 game.player.showCards('players-hand');
-  
+
                 bot.innerHTML = '';
                 game.bot.showCards('bots-hand');
               }, 1000);
-  
+
               deck.innerHTML = '';
               deck.append(cardDeck.displayDeck());
             }
@@ -251,30 +234,18 @@ window.onload = function () {
         }
       }
 
+      console.log("game.player.hand =>>", game.player.hand);
+      console.log("game.bot.hand =>>", game.bot.hand);
+
       //When the hands and stack are empty show who won the game
       if(game.player.hand.length === 0 && game.bot.hand.length === 0){
         game.end();
-        game.player.hand = [];
-        game.bot.hand = [];
-        game.player.points = 0;
-        game.bot.points = 0;
       }
     })
   }
 
   function resetGame(){
-    valueCard.innerHTML = '';
-    deck.innerHTML = '';
-    pile.innerHTML = '';
-    playerPoints.innerText = 0;
-    botPoints.innerText = 0;
-    player.innerHTML = '';
-    bot.innerHTML = '';
-    choice.innerHTML = '';
-    cardDeck.deck = [];
-    cardDeck.pileCards = [];
-    cardDeck.valueCard = [];
-    cardDeck.cardsChosen = [];
+    window.location.reload();
   }
 
   const rulesButton = document.getElementById('rules-button');
@@ -283,19 +254,21 @@ window.onload = function () {
   //Listens to the button click when the users wants to know the rules
   rulesButton.addEventListener('click', function () {
     if (!rulesOpen) {
-      rulesInfo();   
+      rulesInfo();
     } else {
       rulesClose();
     }
   });
 
   function rulesInfo(){
-    document.querySelector('#game-rules').style.display = 'block';
+    document.querySelector('#game-rules').style.display = 'inline-block';
+    document.querySelector('#logo').style.display = 'none';
     rulesOpen = true;
   };
 
   function rulesClose() {
     document.querySelector('#game-rules').style.display = 'none';
+    document.querySelector('#logo').style.display = 'block';
     rulesOpen = false;
   }
 };
