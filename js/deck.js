@@ -72,7 +72,7 @@ class Deck {
         for (let i = 0; i < this.pileCards.length; i++) {
             let img = document.createElement('img');
             img.setAttribute('id', 'card');
-            img.src = `https://github.com/LuisOrtiz79/cardGameBrisca/tree/master/images/${this.pileCards[i].img}`;
+            img.src = `${this.pileCards[i].img}`;
 
             display.appendChild(img);
         }
@@ -88,7 +88,7 @@ class Deck {
         for (let i = 0; i < this.cardsChosen.length; i++) {
             let img = document.createElement('img');
             img.setAttribute('id', 'card');
-            img.src = `https://github.com/LuisOrtiz79/cardGameBrisca/tree/master/images/${this.cardsChosen[i].img}`;
+            img.src = `${this.cardsChosen[i].img}`;
 
             display.appendChild(img);
         }

@@ -11,7 +11,7 @@ class Player {
             for (let i = 0; i < this.hand.length; i++) {
                 let img = document.createElement('img');
                 img.setAttribute('id', 'card');
-                img.src = `https://github.com/LuisOrtiz79/cardGameBrisca/tree/master/images/${this.hand[i].img}`;
+                img.src = `${this.hand[i].img}`;
 
                 display.appendChild(img);
             }
