@@ -113,7 +113,7 @@ window.onload = function () {
     document.getElementById('board').addEventListener('click', (e) => {
       console.log(e.target.src)
 
-      let srcString = e.target.src.replace('http://127.0.0.1:5500/', "./")
+      let srcString = e.target.src.replace('https://luisortiz79.github.io/cardGameBrisca/', "./")
 
       //Finish the last part
       if(game.player.hand.length !== 0 && game.bot.hand.length !== 0){
