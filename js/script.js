@@ -111,10 +111,7 @@ window.onload = function () {
     let valueCardType = cardDeck.valueCard[0].type;
 
     document.getElementById('board').addEventListener('click', (e) => {
-      console.log(e.target.src)
-
-      let srcString = e.target.src.replace('https://luisortiz79.github.io/cardGameBrisca/images/', './images/');
-      console.log(srcString);
+      let srcString = e.target.src.replace('https://luisortiz79.github.io/cardGameBrisca/', './')
 
       //Finish the last part
       if(game.player.hand.length !== 0 && game.bot.hand.length !== 0){
@@ -234,9 +231,6 @@ window.onload = function () {
           }
         }
       }
-
-      console.log("game.player.hand =>>", game.player.hand);
-      console.log("game.bot.hand =>>", game.bot.hand);
 
       //When the hands and stack are empty show who won the game
       if(game.player.hand.length === 0 && game.bot.hand.length === 0){
