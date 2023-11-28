@@ -111,7 +111,7 @@ window.onload = function () {
     let valueCardType = cardDeck.valueCard[0].type;
 
     document.getElementById('board').addEventListener('click', (e) => {
-      //console.log(e.target.src)
+      console.log(e.target.src)
 
       let srcString = e.target.src.replace('http://127.0.0.1:5500/', "../")
 
