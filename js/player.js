@@ -30,7 +30,7 @@ class Player {
             for (let i = 0; i < this.hand.length; i++) {
                 let img = document.createElement('img');
                 img.setAttribute('id', 'card');
-                img.src = `${'https://github.com/LuisOrtiz79/cardGameBrisca/blob/801c2aad0bbe056a4271e4aef40aa3202eefb047/images/card_back.jpg'}`;
+                img.src = `${'../images/card_back.jpg'}`;
 
                 display.appendChild(img);
             }
