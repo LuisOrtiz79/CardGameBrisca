@@ -132,11 +132,8 @@ body button {
 
 /*Hands display*/
 #board {
-    display: inline-block;
     text-align: center;
-    align-items: center;
     position: relative;
-    padding: 10vh;
 }
 
 #cards-chosen {
