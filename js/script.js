@@ -234,7 +234,9 @@ window.onload = function () {
 
       //When the hands and stack are empty show who won the game
       if(game.player.hand.length === 0 && game.bot.hand.length === 0){
-        game.end();
+        setTimeout(() => {
+          game.end();
+        }, 2000);
       }
     })
   }
