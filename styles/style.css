@@ -85,7 +85,8 @@ body button {
 /*Puts together the deck and pile*/
 #flex-container {
     display: flex;
-    width: 300px;
+    width: 320px;
+    margin-right: 20% ;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
